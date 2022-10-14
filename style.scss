@@ -1,0 +1,140 @@
+@import "partials/partials";
+
+// General Classes
+
+body {
+    font-family: $ff-primary;
+    font-size: 0.9375rem;
+    background-color: $clr-primary-darkblue;
+    display: grid;
+    place-items: center;
+    color: $clr-neutral-white;
+    padding: 1rem;
+}
+
+h1 {
+    line-height: 1.4;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+    span {
+        color: $clr-primary-softviolet;
+    }
+}
+
+p {
+    color: $clr-neutral-transWhite6;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+// Pictures Template
+
+%pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top right;
+    opacity: 0.9;
+}
+
+img {
+    @extend %pic;
+}
+
+picture {
+    @extend %pic;
+}
+
+// Utility Classes
+
+.container {
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 62rem;
+    background-color: $clr-primary-desatblue;
+    overflow: hidden;
+
+    @include for-lg-mobile {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    >.banner {
+        @include for-lg-mobile {
+            grid-row: 1/2;
+        }
+    }
+}
+
+.content {
+    display: grid;
+    place-items: start;
+    padding: 4rem;
+    overflow: hidden;
+
+    @include for-tablet {
+        padding: 3rem;
+    }
+
+    @include for-lg-mobile {
+        padding: 2rem;
+    }
+}
+
+.stats {
+    // align-self: end;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 100%;
+    line-height: 1.8;
+
+    div {
+        flex: 1;
+
+        @include for-md-mobile {
+            margin-bottom: 1rem;
+
+        }
+    }
+
+    div:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+
+    span {
+        display: block;
+        color: $clr-neutral-transWhite6;
+
+        &:last-child {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        &:first-child {
+            color: $clr-neutral-white;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+    }
+
+    @include for-md-mobile {
+        flex-direction: column;
+    }
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-color: hsla(277, 63%, 32%, 0.5);
+    }
+}
